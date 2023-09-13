@@ -12,34 +12,40 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="./styles/estoque.css">
-
 </head>
 
 <body>
   <div class="container-fluid">
-    <div class="row flex-nowrap" id="content">
+    <div class="row flex-nowrap">
       <div class="bg-secondary col-auto col-md-2 min-vh-100 d-flex flex-column justify-content-between">
         <div class="bg-secondary">
-          <a class="d-flex text-decoration-none aling-items-center text-white">
-            <span class="fs-4 d-none d-sm-inline">Menu</span>
-          </a>
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-              <a href="index.html" class="nav-link text-white active" aria-current="page">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-white">Mensagens</a>
+              <a href="javascript:void(0);" class="nav-link text-white" onclick="loadPage('./pages/maquinas.html')">Máquinas</a>
             </li>
             <li class="nav-item disabled">
               <a href="javascript:void(0);" class="nav-link text-white" onclick="loadPage('./pages/estoque.html')">Estoque</a>
             </li>
           </ul>
         </div>
+
+        <ul class="nav flex-column fixed-bottom">
+          <li class="nav-item">
+              <select id="funcaoSelector" class="form-select">
+                  <option value="usuario">Usuário</option>
+                  <option value="administrador">Administrador</option>
+              </select>
+          </li>
+        </ul>
+      
       </div>
+
+      <div id="content"></div>
     </div>
   </div>
 
-  <script src="scripts/load-content.js"></script>
+  <script src="scripts/index.js"></script>
   <script src="scripts/estoque.js"></script>
 </body>
+
 </html>
