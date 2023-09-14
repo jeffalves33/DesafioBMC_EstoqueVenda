@@ -22,31 +22,24 @@
         <div class="bg-secondary">
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-              <a href="index.html" class="nav-link text-white">Home</a>
+              <a id="a_home" href="index.html" class="nav-link text-white">Home</a>
             </li>
             <li class="nav-item">
-              <a href="./pages/maquinas.html" class="nav-link text-white">Máquinas</a>
+              <a id="a_maquinas" href="./pages/maquinas.html" class="nav-link text-white disabled">Máquinas</a>
             </li>
             <li class="nav-item disabled">
-              <a href="./pages/estoque.html" class="nav-link text-white">Estoque</a>
+              <a id="a_estoque" href="./pages/estoque.html" class="nav-link text-white disabled">Estoque</a>
             </li>
           </ul>
         </div>
 
         <ul class="nav flex-column fixed-bottom">
           <li class="nav-item">
-              <select id="selectUser" class="form-select" onchange="login(this.value)">
+              <select id="selectUser" class="form-select" onchange="setUserType(this.value)">
+                  <option value="default" selected>Login</option>
                   <option value="usuario">Usuário</option>
                   <option value="administrador">Administrador</option>
               </select>
-          </li>
-          <li class="nav-item">
-            <select id="selectUF" class="form-select" onchange="localStorage.setItem('uf', this.value)">
-                <option value="default" selected>UF</option>
-                <option value="Gustavo">MG</option>
-                <option value="Luvisário">SP</option>
-                <option value="Garcia">GO</option>
-            </select>
           </li>
         </ul>
       
@@ -61,11 +54,6 @@
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      //localStorage.setItem('user', document.getElementById('selectUser').value);
-      //localStorage.setItem('uf', document.getElementById('selectUF').value)
-    });
-  </script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

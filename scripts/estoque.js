@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('preco_maquina1').value = localStorage.getItem('preco_maquina1') || 0;
   document.getElementById('preco_maquina2').value = localStorage.getItem('preco_maquina2') || 0;
   document.getElementById('preco_maquina3').value = localStorage.getItem('preco_maquina3') || 0;
+
 });
 
 function atualizaEstoque() {
