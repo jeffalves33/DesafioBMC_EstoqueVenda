@@ -42,10 +42,10 @@
         </ul>
       </div>
 
-      <section class="h-100">
-        <div class="container h-100 py-4">
+      <section class="h-100 w-100">
+        <div class="container-fluid h-100 py-4">
           <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-10">
+            <div class="col-11">
       
               <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="fw-normal mb-0 text-black">Estoque</h3>
@@ -189,30 +189,6 @@
   </div>
 
 
-  <script>
-    //função que seta os valores salvos quando a página é carregada
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('estoque_maquina1').value = localStorage.getItem('estoque_maquina1') || 0;
-      document.getElementById('estoque_maquina2').value = localStorage.getItem('estoque_maquina2') || 0;
-      document.getElementById('estoque_maquina3').value = localStorage.getItem('estoque_maquina3') || 0;
-
-      document.getElementById('preco_maquina1').value = localStorage.getItem('preco_maquina1') || 0;
-      document.getElementById('preco_maquina2').value = localStorage.getItem('preco_maquina2') || 0;
-      document.getElementById('preco_maquina3').value = localStorage.getItem('preco_maquina3') || 0;
-    });
-
-    //função responsável por atualizar o estoque quando botão clicado
-    function atualizaEstoque() {
-      localStorage.setItem('estoque_maquina1', document.getElementById('estoque_maquina1').value);
-      localStorage.setItem('estoque_maquina2', document.getElementById('estoque_maquina2').value);
-      localStorage.setItem('estoque_maquina3', document.getElementById('estoque_maquina3').value);
-
-      localStorage.setItem('preco_maquina1', document.getElementById('preco_maquina1').value);
-      localStorage.setItem('preco_maquina2', document.getElementById('preco_maquina2').value);
-      localStorage.setItem('preco_maquina3', document.getElementById('preco_maquina3').value);
-
-      location.reload();
-    }
-  </script>
+  <script src="../scripts/estoque.js"></script>
 </body>
 </html>

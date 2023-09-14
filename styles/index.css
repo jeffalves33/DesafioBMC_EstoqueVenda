@@ -2,6 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Defina a altura desejada, como 100% da altura da viewport */
-  flex-direction: column; /* Para alinhar o conteúdo verticalmente */
+  min-height: 100vh;
+  flex-direction: column;
 }

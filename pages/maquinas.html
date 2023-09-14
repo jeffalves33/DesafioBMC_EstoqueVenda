@@ -39,14 +39,22 @@
                   <option value="administrador">Administrador</option>
               </select>
           </li>
+          <li class="nav-item">
+            <select id="selectUF" class="form-select" onchange="localStorage.setItem('uf', this.value)">
+                <option value="default" selected>UF</option>
+                <option value="Gustavo">MG</option>
+                <option value="Luvisário">SP</option>
+                <option value="Garcia">GO</option>
+            </select>
+          </li>
         </ul>
       </div>
 
-      <section class="h-100">
-        <div class="container h-100 py-4">
+      <section class="h-100 w-100">
+        <div class="container-fluid h-100 py-4">
           <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-10">
-      
+            <div class="col-11">
+
               <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="fw-normal mb-0 text-black">Máquinas Pesadas</h3>
                 <div>
@@ -61,7 +69,7 @@
                   </p>
                 </div>
               </div>
-      
+
               <div class="card mb-4">
                 <div class="card-body">
                   <div class="row d-flex justify-content-between align-items-center">
@@ -73,17 +81,17 @@
                     <div class="col-md-3 col-lg-3 col-xl-3">
                       <p class="lead mb-2">Escavadeira R60W-9</p>
                       <p><span class="text-muted">Motor Yanmar 4TNV94L- PHYBY.</p>
-      
+
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                       <button class="btn btn-link"
                         onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                         ↓
                       </button>
-      
-                      <input id="estoque_maquina1" min="0" name="quantity" value="3" type="number"
-                        class="form-control form-control-sm" />
-      
+
+                      <input id="estoque_maquina1" min="0" name="quantity" value="0" type="number"
+                        class="form-control form-control-sm" maquina="Escavadeira R60W-9" maquinaId="1"/>
+
                       <button class="btn btn-link px-2"
                         onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                         ↑
@@ -95,7 +103,7 @@
                   </div>
                 </div>
               </div>
-      
+
               <div class="card mb-4">
                 <div class="card-body">
                   <div class="row d-flex justify-content-between align-items-center">
@@ -107,17 +115,17 @@
                     <div class="col-md-3 col-lg-3 col-xl-3">
                       <p class="lead mb-2">Escavadeira R495L VS</p>
                       <p><span class="text-muted">Motor Cummins QSM11.</p>
-      
+
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                       <button class="btn btn-link"
                         onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                         ↓
                       </button>
-      
+
                       <input id="estoque_maquina2" min="0" name="quantity" value="0" type="number"
-                        class="form-control form-control-sm" />
-      
+                        class="form-control form-control-sm" maquina="Escavadeira R495L VS" maquinaId="2"/>
+
                       <button class="btn btn-link px-2"
                         onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                         ↑
@@ -129,7 +137,7 @@
                   </div>
                 </div>
               </div>
-      
+
               <div class="card mb-4">
                 <div class="card-body">
                   <div class="row d-flex justify-content-between align-items-center">
@@ -141,17 +149,17 @@
                     <div class="col-md-3 col-lg-3 col-xl-3">
                       <p class="lead mb-2">Escavadeira R180LC-9</p>
                       <p><span class="text-muted">Motor CUMMINS QSB 4.5 Tier III.</p>
-      
+
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                       <button class="btn btn-link"
                         onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                         ↓
                       </button>
-      
+
                       <input id="estoque_maquina3" min="0" name="quantity" value="0" type="number"
-                        class="form-control form-control-sm" />
-      
+                        class="form-control form-control-sm" maquina="Escavadeira R180LC-9" maquinaId="3"/>
+
                       <button class="btn btn-link px-2"
                         onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                         ↑
@@ -163,31 +171,82 @@
                   </div>
                 </div>
               </div>
-      
+
               <div class="card">
                 <div class="card-body">
-                  <button type="button" class="btn btn-info btn-block btn-lg">Realizar Pedido</button>
+                  <button type="button" class="btn btn-info btn-block btn-lg" onclick="preencherForm()"
+                    data-target="#exampleModalCenter" data-toggle="modal">Realizar Pedido</button>
                 </div>
               </div>
-      
+
             </div>
           </div>
         </div>
       </section>
+
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Resumo do pedido</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Produto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Cliente</th>
+                    <td id="tableCliente"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Máquina</th>
+                    <td id="tableMaquina"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Quantidade</th>
+                    <td id="tableQuantidade"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Em estoque?</th>
+                    <td id="tableEstoque"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Gerente da região</th>
+                    <td id="tableRegiao"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Novo estoque</th>
+                    <td id="tableNovoEstoque"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Fabricar quantas máquinas?</th>
+                    <td id="tableFabricarMaquina"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Valor total</th>
+                    <td id="tableValorTotal"></td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <script>
-    //função que seta os valores salvos quando a página é carregada
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('estoque_maquina1').value = localStorage.getItem('estoque_maquina1') || 0;
-      document.getElementById('estoque_maquina2').value = localStorage.getItem('estoque_maquina2') || 0;
-      document.getElementById('estoque_maquina3').value = localStorage.getItem('estoque_maquina3') || 0;
-
-      document.getElementById('preco_maquina1').textContent  = localStorage.getItem('preco_maquina1') || 0;
-      document.getElementById('preco_maquina2').textContent  = localStorage.getItem('preco_maquina2') || 0;
-      document.getElementById('preco_maquina3').textContent  = localStorage.getItem('preco_maquina3') || 0;
-    });
-  </script>
+  <script src="../scripts/maquinas.js"></script>
 </body>
 </html>

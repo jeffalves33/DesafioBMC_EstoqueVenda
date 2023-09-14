@@ -35,10 +35,18 @@
 
         <ul class="nav flex-column fixed-bottom">
           <li class="nav-item">
-              <select id="funcaoSelector" class="form-select">
+              <select id="selectUser" class="form-select" onchange="login(this.value)">
                   <option value="usuario">Usuário</option>
                   <option value="administrador">Administrador</option>
               </select>
+          </li>
+          <li class="nav-item">
+            <select id="selectUF" class="form-select" onchange="localStorage.setItem('uf', this.value)">
+                <option value="default" selected>UF</option>
+                <option value="Gustavo">MG</option>
+                <option value="Luvisário">SP</option>
+                <option value="Garcia">GO</option>
+            </select>
           </li>
         </ul>
       
@@ -52,5 +60,12 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      //localStorage.setItem('user', document.getElementById('selectUser').value);
+      //localStorage.setItem('uf', document.getElementById('selectUF').value)
+    });
+  </script>
 </body>
 </html>
