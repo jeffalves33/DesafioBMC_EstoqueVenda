@@ -1,8 +1,12 @@
-<h3 align="center">Desafio BMC Hyundai</h3>
+<h2 align="center">Desafio BMC Hyundai</h2>
 
 <p align="center">
     Um sistema de pedidos de máquinas BMC Hyundai.
 </p>
+
+<h3 align="center">
+    Acesse o site <a href="https://jeffalves33.github.io/DesafioBMC_EstoqueVenda/index.html">clicando aqui</a>
+</h3>
 
 
 ## Desafio BMC Hyundai 1.0
@@ -43,7 +47,7 @@ A BMC Hyundai oferece três modelos de máquinas para venda: máquina A, máquin
 
 Se você deseja clonar este repositório para praticar, desenvolver ou melhorar, siga estas etapas em sua máquina:
 
-- Clone o repositório: `git clone [URL_DO_REPOSITÓRIO](https://github.com/jeffalves33/DesafioBMC_EstoqueVenda)`
+- Clone o repositório: `git clone https://github.com/jeffalves33/DesafioBMC_EstoqueVenda`
 - Abra no navegador
 - Divirta-se!
 
