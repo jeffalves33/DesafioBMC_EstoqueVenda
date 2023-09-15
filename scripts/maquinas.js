@@ -1,3 +1,6 @@
+// Defina a biblioteca jsPDF
+window.jsPDF = window.jspdf.jsPDF;
+
 //função que seta os valores salvos quando a página é carregada
 document.addEventListener('DOMContentLoaded', function() {
     const estoqueIds = ['estoque_maquina1', 'estoque_maquina2', 'estoque_maquina3'];
@@ -64,4 +67,22 @@ function preencherForm() {
         }
     }
     document.getElementById('tableRegiao').textContent = localStorage.getItem('uf');
+}
+
+
+function gerarPDF() {
+    const documentPDF = new jsPDF();
+    const elementToConvert = document.getElementById('tableExtrato');
+
+    // Converte o elemento em uma imagem ou tela de canvas
+    html2canvas(elementToConvert).then(function(canvas) {
+        // Converte a tela de canvas em uma imagem em formato base64
+        const imgData = canvas.toDataURL('image/png');
+
+        // Adiciona a imagem ao PDF
+        documentPDF.addImage(imgData, 'PNG', 10, 10, 190, 0);
+
+        // Salva o PDF
+        documentPDF.save('extrato.pdf');
+    });
 }
