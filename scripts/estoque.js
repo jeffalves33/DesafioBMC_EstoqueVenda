@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function atualizaEstoque() {
   const estoqueIds = ['estoque_maquina1', 'estoque_maquina2', 'estoque_maquina3'];
   const precoIds = ['preco_maquina1', 'preco_maquina2', 'preco_maquina3'];
+  const controleEstoqueIds = ['valorInicialEstoque1', 'valorInicialEstoque2', 'valorInicialEstoque3'];
 
   for (let i = 0; i < estoqueIds.length; i++) {
     const estoqueElement = document.getElementById(estoqueIds[i]);
@@ -31,6 +32,8 @@ function atualizaEstoque() {
     if (precoElement) {
       localStorage.setItem(precoIds[i], precoElement.value);
     }
+
+    localStorage.setItem(controleEstoqueIds[i], estoqueElement.value);
   }
 
   location.reload();

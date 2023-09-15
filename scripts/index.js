@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const tags = [
     document.getElementById('a_home'),
     document.getElementById('a_maquinas'),
-    document.getElementById('a_estoque')
+    document.getElementById('a_estoque'),
+    document.getElementById('a_controleEstoque')
   ];
 
   for(let i = 0; i < tags.length; i++) {

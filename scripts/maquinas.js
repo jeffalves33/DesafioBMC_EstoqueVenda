@@ -30,6 +30,7 @@ function preencherForm() {
         document.getElementById('estoque_maquina2'),
         document.getElementById('estoque_maquina3')
     ];
+    const attControleEstoqueIds = ['valorAtualEstoque1', 'valorAtualEstoque2', 'valorAtualEstoque3'];
 
     for (let maquinaAtual = 0; maquinaAtual < 3; maquinaAtual++) {
         let estoqueMaquinaString = 'estoque_maquina' + String(maquinaAtual + 1);
@@ -39,6 +40,9 @@ function preencherForm() {
             // Verifica se o estoque é suficiente
             let estoqueAtual = parseInt(localStorage.getItem(estoqueMaquinaString));
             let quantidadeSelecionada = parseInt(maquinas[maquinaAtual].value);
+
+            //atualiza o estatus de controle de estoque
+            localStorage.setItem(attControleEstoqueIds[maquinaAtual], quantidadeSelecionada);
 
             if (estoqueAtual >= quantidadeSelecionada) {
                 // Atualiza os elementos na tabela
@@ -85,4 +89,9 @@ function gerarPDF() {
         // Salva o PDF
         documentPDF.save('extrato.pdf');
     });
+}
+
+
+function atualizarEstoque(maquina, quantidadeSelecionada) {
+
 }

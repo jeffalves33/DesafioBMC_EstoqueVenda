@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BMC - Estoque</title>
+  <title>BMC - Vendas</title>
   <link rel="icon" href="../assets/images/BMC_Icon.png" type="image/png">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -12,6 +12,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="../styles/estoque.css">
+  <link rel="stylesheet" href="../styles/index.css">
 </head>
 
 <body>
@@ -27,14 +28,14 @@
               <a id="a_maquinas" href="./maquinas.html" class="nav-link text-white disabled">Máquinas</a>
             </li>
             <li class="nav-item disabled">
-              <a id="a_estoque" href="#" class="nav-link text-white disabled" colorActive="true">Estoque</a>
+              <a id="a_estoque" href="#" class="nav-link text-white disabled">Estoque</a>
             </li>
             <li class="nav-item disabled">
               <div class="d-flex align-items-center ml-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path>
                 </svg>
-                <a id="a_controleEstoque" href="./controleEstoque.html" class="nav-link text-white">Controle</a>
+                <a id="a_controleEstoque" href="./controleEstoque.html" class="nav-link text-white" coloractive="true">Controle</a>
               </div>
             </li>
           </ul>
@@ -47,11 +48,11 @@
             <div class="col-11">
 
               <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="fw-normal mb-0 text-black">Estoque</h3>
+                <h3 class="fw-normal mb-0 text-black">Controle de Estoque</h3>
                 <div>
                   <p class="mb-0">
                     <span class="text-muted">Ordenar por:</span> 
-                    <a href="#" class="text-body">nome 
+                    <a href="#" class="text-body">maquina 
                       <i class="fas fa-angle-down mt-1"></i>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
@@ -64,36 +65,22 @@
               <div class="card mb-4">
                 <div class="card-body">
                   <div class="row d-flex justify-content-between align-items-center">
-                    <div class="col-md-3 col-lg-2 col-xl-2 py-4 px-1">
+                    <div class="col-md-2 col-lg-2 col-xl-2 py-4 px-1">
                       <img
                         src="../assets/images/R60W-9S-1.png"
                         class="img-fluid" alt="Escavadeira">
                     </div>
-                    <div class="col-md-3 col-lg-3 col-xl-3">
+                    <div class="col-md-3 col-lg-3 col-xl-4">
                       <p class="lead mb-2">Escavadeira R60W-9</p>
                       <p><span class="text-muted">Motor Yanmar 4TNV94L- PHYBY.</p>
 
                     </div>
-                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                      <button class="btn btn-link"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                        ↓
-                      </button>
-
-                      <input id="estoque_maquina1" min="0" name="quantity" value="3" type="number"
-                        class="form-control form-control-sm" />
-
-                      <button class="btn btn-link px-2"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                        ↑
-                      </button>
+                    <div class="col-md-3 col-lg-2 col-xl-2 d-flex mr-3">
+                      <h1><a id="porcentagem1">0</a>%</h1>
                     </div>
-                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                      <h5 class="mb-0">R$ 
-                        <input id="preco_maquina1" min="0" name="preco" value="599.00" type="number"
-                        class="form-control form-control-sm" />
-                      </h5>
-                    </div>
+                  </div>
+                  <div class="progress" style="max-width: 100%;">
+                    <div id="progress1" class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                   </div>
                 </div>
               </div>
@@ -101,36 +88,22 @@
               <div class="card mb-4">
                 <div class="card-body">
                   <div class="row d-flex justify-content-between align-items-center">
-                    <div class="col-md-3 col-lg-2 col-xl-2 py-4 px-1">
+                    <div class="col-md-2 col-lg-2 col-xl-2 py-4 px-1">
                       <img
                         src="../assets/images/R495LVS-thumb.png"
                         class="img-fluid" alt="Escavadeira">
                     </div>
-                    <div class="col-md-3 col-lg-3 col-xl-3">
+                    <div class="col-md-3 col-lg-3 col-xl-4">
                       <p class="lead mb-2">Escavadeira R495L VS</p>
                       <p><span class="text-muted">Motor Cummins QSM11.</p>
 
                     </div>
-                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                      <button class="btn btn-link"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                        ↓
-                      </button>
-
-                      <input id="estoque_maquina2" min="0" name="quantity" value="2" type="number"
-                        class="form-control form-control-sm" />
-
-                      <button class="btn btn-link px-2"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                        ↑
-                      </button>
+                    <div class="col-md-3 col-lg-2 col-xl-2 d-flex mr-3">
+                      <h1><a id="porcentagem2">0</a>%</h1>
                     </div>
-                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                      <h5 class="mb-0">R$ 
-                        <input id="preco_maquina2" min="0" name="preco" value="899.00" type="number"
-                        class="form-control form-control-sm" />
-                      </h5>
-                    </div>
+                  </div>
+                  <div class="progress" style="max-width: 100%;">
+                    <div id="progress2" class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                   </div>
                 </div>
               </div>
@@ -138,36 +111,22 @@
               <div class="card mb-4">
                 <div class="card-body">
                   <div class="row d-flex justify-content-between align-items-center">
-                    <div class="col-md-3 col-lg-2 col-xl-2 py-4 px-1">
+                    <div class="col-md-2 col-lg-2 col-xl-2 py-4 px-1">
                       <img
                         src="../assets/images/R180LC-9.jpg"
                         class="img-fluid" alt="Escavadeira">
                     </div>
-                    <div class="col-md-3 col-lg-3 col-xl-3">
+                    <div class="col-md-3 col-lg-3 col-xl-4">
                       <p class="lead mb-2">Escavadeira R180LC-9</p>
                       <p><span class="text-muted">Motor CUMMINS QSB 4.5 Tier III.</p>
 
                     </div>
-                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                      <button class="btn btn-link"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                        ↓
-                      </button>
-
-                      <input id="estoque_maquina3" min="0" name="quantity" value="1" type="number"
-                        class="form-control form-control-sm" />
-
-                      <button class="btn btn-link px-2"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                        ↑
-                      </button>
+                    <div class="col-md-3 col-lg-2 col-xl-2 d-flex mr-3">
+                      <h1><a id="porcentagem3">0</a>%</h1>
                     </div>
-                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                      <h5 class="mb-0">R$ 
-                        <input id="preco_maquina3" min="0" name="preco" value="499.00" type="number"
-                        class="form-control form-control-sm" />
-                      </h5>
-                    </div>
+                  </div>
+                  <div class="progress" style="max-width: 100%;">
+                    <div id="progress3" class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                   </div>
                 </div>
               </div>
@@ -179,7 +138,6 @@
                     Atualizar estoques</button>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -187,8 +145,7 @@
     </div>
   </div>
 
-
   <script src="../scripts/index.js"></script>
-  <script src="../scripts/estoque.js"></script>
+  <script src="../scripts/controleEstoque.js"></script>
 </body>
 </html>
