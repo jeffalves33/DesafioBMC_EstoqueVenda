@@ -1,14 +1,20 @@
 //função que seta os valores salvos quando a página é carregada
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('estoque_maquina1').value = 0;
-    document.getElementById('estoque_maquina2').value = 0;
-    document.getElementById('estoque_maquina3').value = 0;
+    const estoqueIds = ['estoque_maquina1', 'estoque_maquina2', 'estoque_maquina3'];
+    const precoIds = ['preco_maquina1', 'preco_maquina2', 'preco_maquina3'];
 
-    document.getElementById('preco_maquina1').textContent  = localStorage.getItem('preco_maquina1') || 0;
-    document.getElementById('preco_maquina2').textContent  = localStorage.getItem('preco_maquina2') || 0;
-    document.getElementById('preco_maquina3').textContent  = localStorage.getItem('preco_maquina3') || 0;
+    for (let i = 0; i < estoqueIds.length; i++) {
+        const estoqueElement = document.getElementById(estoqueIds[i]);
+        const precoElement = document.getElementById(precoIds[i]);
 
+        if (estoqueElement) {
+            estoqueElement.value = 0;
+        }
 
+        if (precoElement) {
+            precoElement.textContent = localStorage.getItem(precoIds[i]) || 0;
+        }
+    }
 });
 
 function preencherForm() {
@@ -36,7 +42,6 @@ function preencherForm() {
                 document.getElementById('tableMaquina').textContent = maquinas[maquinaAtual].getAttribute('maquina');
                 document.getElementById('tableQuantidade').textContent = quantidadeSelecionada;
                 document.getElementById('tableEstoque').textContent = estoqueAtual;
-                document.getElementById('tableValorTotal').textContent = localStorage.getItem(precoMaquinaString) * quantidadeSelecionada;
 
                 // Atualiza o estoque no localStorage
                 localStorage.setItem(estoqueMaquinaString, estoqueAtual - quantidadeSelecionada);
@@ -47,15 +52,15 @@ function preencherForm() {
             } else {
                 // Caso o estoque não seja suficiente
                 document.getElementById('tableMaquina').textContent = maquinas[maquinaAtual].getAttribute('maquina');
-                document.getElementById('tableQuantidade').textContent = 0;
+                document.getElementById('tableQuantidade').textContent = quantidadeSelecionada;
                 document.getElementById('tableEstoque').textContent = estoqueAtual;
-                document.getElementById('tableValorTotal').textContent = 0;
 
                 // Define a quantidade a ser fabricada e atualiza o estoque no localStorage
                 document.getElementById('tableFabricarMaquina').textContent = quantidadeSelecionada - estoqueAtual;
                 document.getElementById('tableNovoEstoque').textContent = 0;
                 localStorage.setItem(estoqueMaquinaString, 0);
             }
+            document.getElementById('tableValorTotal').textContent = localStorage.getItem(precoMaquinaString) * quantidadeSelecionada;
         }
     }
     document.getElementById('tableRegiao').textContent = localStorage.getItem('uf');
