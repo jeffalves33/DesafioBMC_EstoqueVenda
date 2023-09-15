@@ -22,7 +22,7 @@
         <div class="bg-secondary">
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-              <a id="a_home" href="index.html" class="nav-link text-white">Home</a>
+              <a id="a_home" href="index.html" class="nav-link text-white" colorActive="true">Home</a>
             </li>
             <li class="nav-item">
               <a id="a_maquinas" href="./pages/maquinas.html" class="nav-link text-white disabled">Máquinas</a>
@@ -33,15 +33,12 @@
           </ul>
         </div>
 
-        <ul class="nav flex-column fixed-bottom">
-          <li class="nav-item">
-              <select id="selectUser" class="form-select" onchange="setUserType(this.value)">
-                  <option value="default" selected>Login</option>
-                  <option value="usuario">Usuário</option>
-                  <option value="administrador">Administrador</option>
-              </select>
-          </li>
-        </ul>
+
+        <select id="selectUser" class="form-select form-select-sm" onchange="setUserType(this.value)">
+            <option value="default" selected>Login</option>
+            <option value="usuario">Usuário</option>
+            <option value="administrador">Administrador</option>
+        </select>
       
       </div>
 

@@ -12,3 +12,17 @@ function setUserType(userType) {
     localStorage.setItem('user', 'usuario');
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const tags = [
+    document.getElementById('a_home'),
+    document.getElementById('a_maquinas'),
+    document.getElementById('a_estoque')
+  ];
+
+  for(let i = 0; i < tags.length; i++) {
+    if(tags[i].getAttribute('colorActive')) {
+      tags[i].style.backgroundColor = '#0055A2';
+    }
+  }
+});

@@ -5,3 +5,23 @@
   min-height: 100vh;
   flex-direction: column;
 }
+
+#selectUser {
+  margin-bottom: 20%;
+}
+#selectUF {
+  margin-bottom: 30%;
+  margin-left: 30px;
+}
+select.form-select {
+  background-color: #0055A2;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+select.form-select option {
+  background-color: #0055A2;
+  color: white;
+}
